@@ -1,12 +1,19 @@
-import sys, re
-from handlers import *
-from utils import *
-from rules import *
+import sys
+import re
+from Handler import HTMLRenderer
+from Rules import ListRule
+from Rules import ListItemRule
+from Rules import TitleRule
+from Rules import HeadingRule
+from Rules import ParagraphRule
+from Utils import blocks
+
 
 # reference : Beginning Python: From Novice to Professional - Project 1: Instant Markup
 class Parser:
     '''
-    read the txt file and use parser to hand the file
+    A Parser reads a text file, applying rules and controlling a
+    handler.
     '''
     def __init__(self, handler):
         self.handler = handler
@@ -35,7 +42,10 @@ class Parser:
 
 
 class BasicTextParser(Parser):
-
+    '''
+    A specific Parser that adds rules and filters in its
+    constructor.
+    '''
     def __init__(self, handler):
         Parser.__init__(self, handler)
         self.addRule(ListRule())
