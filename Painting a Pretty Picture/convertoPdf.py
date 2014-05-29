@@ -18,8 +18,6 @@ high = [row[3] for row in data]
 low = [row[4] for row in data]
 times = [row[0] + row[1] / 12.0 for row in data]
 #python can make for loop in [], that is a very convenience way in traversal list
-
-# Here creat several color lines according to the data in URL
 lp = LinePlot()
 lp.x = 50
 lp.y = 50
@@ -29,7 +27,6 @@ lp.data = [zip(times, pred), zip(times, high), zip(times, low)]
 lp.lines[0].strokeColor = colors.blue
 lp.lines[1].strokeColor = colors.red
 lp.lines[2].strokeColor = colors.green
-
 
 drawing.add(lp)
 drawing.add(String(250, 150, 'Sunspots', fontSize = 14, fillColor = colors.red))
