@@ -2,6 +2,8 @@ from xml.sax.handler import ContentHandler
 from xml.sax import parse
 import os
 
+#reference : Beginning Python: From Novice to Professional - Project 3: XML for All Occasions
+
 
 class Dispatcher:
         def dispatch(self, prefix, name, attrs=None):
