@@ -1,8 +1,11 @@
 from urllib import urlopen
+import urlparse
 import textwrap
 import re
 
 #reference : Beginning Python: From Novice to Professional - Project 3: In The News
+#reference : http://www.youtube.com/watch?v=SFas42HBtMg
+
 
 # Number of seconds in one day
 day = 24 * 60 * 60
