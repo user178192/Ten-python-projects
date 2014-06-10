@@ -7,7 +7,7 @@ import asyncore
 PORT = 5005
 NAME = 'TestChat'
 
-#reference : Beginning Python: From Novice to Professional - Project 4: A Virtual Tea Party
+#reference : Beginning Python: From Novice to Professional - Project 5: A Virtual Tea Party
 
 
 class EndSession(Exception):
