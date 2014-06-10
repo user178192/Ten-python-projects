@@ -4,6 +4,12 @@ from asynchat import async_chat
 import socket
 import asyncore
 
+<<<<<<< HEAD
+=======
+PORT = 5005
+NAME = 'TestChat'
+
+>>>>>>> FETCH_HEAD
 #reference : Beginning Python: From Novice to Professional - Project 5: A Virtual Tea Party
 
 
