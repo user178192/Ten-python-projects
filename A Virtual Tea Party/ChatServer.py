@@ -1,13 +1,10 @@
-
+import sys
 from asyncore import dispatcher
 from asynchat import async_chat
 import socket
 import asyncore
 
-PORT = 5005
-NAME = 'TestChat'
-
-#reference : Beginning Python: From Novice to Professional - Project 4: A Virtual Tea Party
+#reference : Beginning Python: From Novice to Professional - Project 5: A Virtual Tea Party
 
 
 class EndSession(Exception):
@@ -67,7 +64,7 @@ class LoginRoom(Room):
                 self.broadcast('Welcome to %s\r\n' % self.server.name)
 
         def unknown(self, session, cmd):
-                session.push('Please log in \nUse "login"\r\n')
+                session.push('Please log in \nUse "login" your name\r\n')
 
         def do_login(self, session, line):
                 name = line.strip()
@@ -172,7 +169,12 @@ class ChatServer(dispatcher):
                 ChatSession(self, conn)
 
 if __name__ == '__main__':
-        s = ChatServer(PORT, NAME)
+
+        port = int(sys.argv[1])
+        name = sys.argv[2]
+
+        s = ChatServer(port, name)
+
         try:
                 asyncore.loop()
 
