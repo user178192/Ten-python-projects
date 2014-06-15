@@ -60,7 +60,6 @@ class LoginRoom(Room):
 
         def add(self, session):
                 Room.add(self, session)
-
                 self.broadcast('Welcome to %s\r\n' % self.server.name)
 
         def unknown(self, session, cmd):
