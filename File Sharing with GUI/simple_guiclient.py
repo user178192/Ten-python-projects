@@ -50,17 +50,22 @@ class Client(wx.App):
         them. Finally, sets up the GUI.
         """
         # Give the server a head start:
-        sleep(HEAD_START)
-        self.server = ServerProxy(url)
-        super(Client, self).__init__()
-        self.secret = randomString(SECRET_LENGTH)
-        n = ListableNode(url, dirname, self.secret)
-        t = Thread(target=n._start)
-        t.setDaemon(1)
-        t.start()
-        for line in open(urlfile):
-            line = line.strip()
-            self.server.hello(line)
+        try:
+            sleep(HEAD_START)
+            self.server = ServerProxy(url)
+            super(Client, self).__init__()
+            self.secret = randomString(SECRET_LENGTH)
+            n = ListableNode(url, dirname, self.secret)
+            t = Thread(target=n._start)
+            t.setDaemon(1)
+            t.start()
+            for line in open(urlfile):
+                line = line.strip()
+                self.server.hello(line)
+
+        except:
+            print "init fail"
+            exit(1)
 
     def updateList(self):
         """
@@ -87,8 +92,7 @@ class Client(wx.App):
         self.updateList()
         vbox = wx.BoxSizer(wx.VERTICAL)
         vbox.Add(hbox, proportion=0, flag=wx.EXPAND)
-        vbox.Add(files, proportion=1,
-                        flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, border=10)
+        vbox.Add(files, proportion=1, flag=wx.EXPAND | wx.LEFT | wx.RIGHT | wx.BOTTOM, border=10)
         bkg.SetSizer(vbox)
         win.Show()
         return True
